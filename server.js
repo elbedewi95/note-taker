@@ -37,7 +37,7 @@ function createNote(body, noteArr) {
     const newNote = body;
     console.log(newNote);
     console.log(noteArr);
-    
+
     if (noteArr.length === 0)
         noteArr.push(0);
 
@@ -56,6 +56,26 @@ function createNote(body, noteArr) {
 app.post('/api/notes', (req, res) => {
     const newNote = createNote(req.body, jsonNotes);
     res.json(newNote);
+});
+
+// delete note
+function deleteNote(id, noteArr) {
+    for (let i = 0; i < noteArr.length; i++) {
+        
+        if (noteArr[i].id == id) {
+            noteArr.splice(i, 1);
+            fs.writeFileSync(
+                path.join(__dirname, './db/db.json'),
+                JSON.stringify(noteArr, null, 2)
+            );
+            break;
+        }
+    }
+}
+//delete route
+app.delete('/api/notes/:id', (req, res) => {
+    deleteNote(req.params.id, jsonNotes);
+    res.json(true);
 });
 
 // PORT listen
