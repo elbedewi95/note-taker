@@ -1,8 +1,7 @@
 # note-taker
 
-<h1> Note Taker </h1>
-
 <p> This is a website to take, view and delete notes </p>
+<p> Live app URL : <a href="https://glacial-beach-79258.herokuapp.com/"> https://glacial-beach-79258.herokuapp.com/ </a>
 <br>
 <h2>Table of Contents</h2>
 
